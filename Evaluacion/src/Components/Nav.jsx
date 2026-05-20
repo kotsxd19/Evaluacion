@@ -1,6 +1,27 @@
-// Nav.jsx define la barra de navegación visible en las páginas autenticadas.
-import { Link } from 'react-router' // Link permite navegación interna sin recargar la página.
+import { useEffect } from 'react'
+import { Link } from 'react-router' 
+import { useNavigate } from 'react-router'
 
+
+
+
+
+
+  
+
+const Nav = () => {
+
+  const navigate = useNavigate() 
+  const token = localStorage.getItem('fakestore_token') || sessionStorage.getItem('fakestore_token')
+  // El usuario puede haber elegido guardar la sesión en localStorage o sessionStorage.
+  const user = localStorage.getItem('fakestore_user') || sessionStorage.getItem('fakestore_user') || ''
+
+   useEffect(() => {
+    // Si no hay token, redirige al login.
+    if (!token) {
+      navigate('/')
+    }
+  }, [navigate, token])
 
 const handleLogout = () => {
 
@@ -12,8 +33,8 @@ const handleLogout = () => {
     sessionStorage.removeItem('fakestore_email')
     navigate('/')
   }
+
   
-const Nav = () => {
   return (
     <nav className="bg-yellow-400 shadow-md">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
