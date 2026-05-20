@@ -19,7 +19,7 @@ const Products = () => {
   const filteredProducts = products.filter((product) => {
     const query = searchTerm.trim().toLowerCase()
     if (!query) return true
-    return [product.title, product.description, product.category]
+    return [product.title, product.body, product.userId]
       .join(' ')
       .toLowerCase()
       .includes(query)
