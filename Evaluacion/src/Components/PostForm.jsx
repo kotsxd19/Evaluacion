@@ -72,12 +72,13 @@ const PostForm = ({ initialData = {}, onSubmit, submitting = false, onClose, cat
           </div>
 
 
-          <div>
-            <label className="block text-sm font-medium text-slate-700">Body</label>
-            <input
+          <div className="col-span-full">
+            <label className="block text-sm/6 font-medium text-slate-700">Body</label>
+            <textarea
               name="body"
               value={form.body}
               onChange={handleChange}
+              rows={5}
               placeholder="Descripcion"
               className="mt-1 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none focus:border-indigo-500 focus:bg-white"
               required
